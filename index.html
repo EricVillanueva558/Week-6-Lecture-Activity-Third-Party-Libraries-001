@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Piece Fan Page</title>
+<!-- Title of the webpage -->
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Includes Bootstrap styles for layout and components -->
+
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Adds Animate On Scroll (AOS) library for scroll animations -->
+  
+  <style>
+    body {
+      background-color: #f8f9fa;
+      /* Sets a light background color for the page */
+    }
+    .heading {
+      font-family: 'Georgia', serif;
+      /* Applies a serif font to the heading */
+      color: #ff4500;
+      /* Sets the text color to orange-red */
+      text-shadow: 2px 2px #000;
+      /* Adds a black shadow to the text */
+    }
+    .character-card {
+        border: 2px solid #ff6347;
+      /* Adds a tomato-colored border to the character cards */
+      border-radius: 10px;
+      /* Rounds the corners of the cards */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container text-center mt-5">
+    <!-- Center-aligned container with a top margin -->
+    <h1 class="heading" data-aos="fade-down">Welcome to the One Piece Universe!</h1>
+    <!-- Main heading with AOS fade-down animation -->
+    <div class="alert alert-warning mt-4" role="alert" data-aos="fade-up">
+        <!-- Alert box with warning style and fade-up animation -->
+      "Power isn't determined by your size but by the size of your heart and dreams!" <span class="badge badge-dark">- Monkey D. Luffy</span>
+      <!-- Dark badge showing the quote's author -->
+    </div>
+    
+    <!-- Bootstrap Button -->
+    <button class="btn btn-primary my-3" onclick="showQuote()">Show Random Quote</button>
+    
+    <!-- Character Cards -->
+    <div id="quote-section" class="my-4"></div>
+    
+    <!-- Anime.js Example -->
+    <h3 class="mt-5">Featured Characters</h3>
+    <div id="character-cards" class="row justify-content-center mt-3">
+      <div class="col-md-4 mx-2 character-card p-3" data-aos="zoom-in">
+        <h4 class="text-danger">Roronoa Zoro</h4>
+        <p>The swordsman of the Straw Hat Pirates.</p>
+      </div>
+      <div class="col-md-4 mx-2 character-card p-3" data-aos="zoom-in">
+        <!-- Character card for Nami with AOS zoom-in animation -->
+        <h4 class="text-primary">Nami</h4>
+         <!-- Card title with blue text for Nami -->
+        <p>The navigator with a sharp eye for treasure.</p>
+         <!-- Description of Nami -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS, AOS JS, Anime.js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+   <!-- Includes jQuery for handling JavaScript functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Includes Bootstrap JavaScript for interactive components -->
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <!-- Includes Anime.js for animations -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Includes AOS library for scroll animations -->
+  
+  
+  <!-- Custom Script -->
+  <script>
+    AOS.init();
+    /* Initializes the AOS animations */
+
+    function showQuote() {
+         /* Function to display a random quote */
+      const quotes = [
+        '“I am going to be the Pirate King!” - Luffy',
+        '“I don’t care what the society says. I’ve regretted doing anything. I will survive and do what I want to.” - Roronoa Zoro',
+        '“When you decided to go to the sea, it was your own decision.” - Nami'
+      ];
+      /* Array of One Piece quotes */
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      /* Selects a random quote from the array */
+      document.getElementById('quote-section').innerHTML = `
+        <div class="alert alert-info" data-aos="flip-left">
+          ${randomQuote}
+        </div>`;
+      /* Inserts the random quote into the quote-section with a flip-left animation */
+
+      anime({
+        targets: '#quote-section',
+        /* Targets the quote-section for animation */
+        scale: [0.5, 1],
+        /* Animates scaling from 50% to 100% size */
+        duration: 1000,
+        /* Animation duration of 1 second */
+      });
+    }
+  </script>
+
+</body>
+</html>
